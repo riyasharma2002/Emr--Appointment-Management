@@ -3,7 +3,7 @@
  * Connects React frontend to Python backend API
  */
 
-const API_BASE_URL = 'http://localhost:5001/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
 
 /**
  * Get appointments with optional filtering
@@ -14,7 +14,7 @@ const API_BASE_URL = 'http://localhost:5001/api';
  */
 export async function getAppointments(date = null, status = null, doctor = null) {
   try {
- 
+
     const params = new URLSearchParams();
     if (date) params.append('date', date);
     if (status) params.append('status', status);
